@@ -88,7 +88,7 @@ $J
 \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial x}{\partial w} \\
 \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
 \end{vmatrix}$ 。
-  - 在三重积分的坐标变换中，$|J|$ 表示体积元素的缩放比例。例如，从直角坐标 $(x,y,z)$ 变换到球坐标 $(\rho,\varphi,\theta)$ ， $x=\rho\sin{\varphi}\cos{\theta}$ ， $y=\rho\sin{\varphi}\sin{\theta}$ ， $z=\rho\cos{\varphi}$，则雅可比行列式： $J=\rho^2\sin{\varphi}$ 
+  - 在三重积分的坐标变换中， $|J|$ 表示体积元素的缩放比例。例如，从直角坐标 $(x,y,z)$ 变换到球坐标 $(\rho,\varphi,\theta)$ ， $x=\rho\sin{\varphi}\cos{\theta}$ ， $y=\rho\sin{\varphi}\sin{\theta}$ ， $z=\rho\cos{\varphi}$，则雅可比行列式： $J=\rho^2\sin{\varphi}$ 
   - 在计算三重积分 $\iiint_V f(x,y,z)dxdydz$ 变换到极坐标下的积分 $\iiint_{V' } f(\rho\sin{\varphi}\cos{\theta},\rho\sin{\varphi}\sin{\theta},\rho\cos{\varphi})\rho^2\sin{\varphi}d\rho d\varphi d\theta$ 时， $\rho^2\sin{\varphi}=|J|$ 就是体积元素的缩放因子。
 
 ### 海森矩阵
