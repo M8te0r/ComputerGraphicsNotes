@@ -11,11 +11,10 @@ $$
 $$
 
 
-设向量场 $\vec{F}=P(x,y,z)\vec{i}+Q(x,y,z)\vec{j}+R(x,y,z)\vec{k}$ ，其中 $P、Q、R$ 是标量函数，$\vec{i}、\vec{j}、\vec{k}$ 分别是 $x、y、z$ 方向的单位向量，它有以下运算规则:
+设向量场 $\vec{F}=P(x,y,z)\vec{i}+Q(x,y,z)\vec{j}+R(x,y,z)\vec{k}$ ，其中 $P、Q、R$ 是标量函数， $\vec{i}、\vec{j}、\vec{k}$ 分别是 $x、y、z$ 方向的单位向量，它有以下运算规则:
 
 $$
-\left\{
-\begin{align}
+\begin{cases}
     \text{grad}(u)
     &=\nabla u
     =\frac{\partial u}{\partial x}\vec{i}
@@ -37,8 +36,7 @@ $$
     \Delta
     &=\nabla \cdot \nabla
     =\nabla^2
-\end{align}
-\right.
+\end{cases}
 $$
 
 > 注意： $\nabla \cdot \vec{A}$ 与 $\vec{A} \cdot \nabla$ 是不同的，前者表示一个散度（标量），后者表示微分算子
@@ -90,16 +88,14 @@ $ 。
   - 在计算二重积分 $\iint_D f(x,y)dxdy$ 变换到极坐标下的积分 $\iint_{D' } f(r\cos{\theta},r\sin{\theta})rdrd\theta$ 时， $r=|J|$ 就是面积元素的缩放因子。
 
 - **三维情况**：对于从 $(u,v,w)$ 空间到 $(x,y,z)$ 空间的坐标变换 $x=x(u,v,w)，y=y(u,v,w)，z=z(u,v,w)$ ，则雅可比行列式： 
-$
-J
+$J
 =\frac{\partial(x,y,z)}{\partial(u,v,w)}
 =\begin{vmatrix} 
 \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \\ 
 \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial x}{\partial w} \\
 \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
-\end{vmatrix}
-$ 。
-  - 在三重积分的坐标变换中，$|J|$ 表示体积元素的缩放比例。例如，从直角坐标 $(x,y,z)$ 变换到球坐标 $(\rho,\varphi,\theta)$ ，$x=\rho\sin{\varphi}\cos{\theta}$ ，$y=\rho\sin{\varphi}\sin{\theta}$ ， $z=\rho\cos{\varphi}$，则雅可比行列式：$ J=\rho^2\sin{\varphi}$
+\end{vmatrix}$ 。
+  - 在三重积分的坐标变换中，$|J|$ 表示体积元素的缩放比例。例如，从直角坐标 $(x,y,z)$ 变换到球坐标 $(\rho,\varphi,\theta)$ ， $x=\rho\sin{\varphi}\cos{\theta}$ ， $y=\rho\sin{\varphi}\sin{\theta}$ ， $z=\rho\cos{\varphi}$，则雅可比行列式： $ J=\rho^2\sin{\varphi}$ 
   - 在计算三重积分 $\iiint_V f(x,y,z)dxdydz$ 变换到极坐标下的积分 $\iiint_{V' } f(\rho\sin{\varphi}\cos{\theta},\rho\sin{\varphi}\sin{\theta},\rho\cos{\varphi})\rho^2\sin{\varphi}d\rho d\varphi d\theta$ 时， $\rho^2\sin{\varphi}=|J|$ 就是体积元素的缩放因子。
 
 ### 海森矩阵
@@ -125,7 +121,7 @@ $$
 
 ## 场论
 ### 向量场
- $ \mathbf{e}_i$ 是 $\mathbb{R}^n$ 中的第i个标准基向量。
+ $\mathbf{e}_i$ 是 $\mathbb{R}^n$ 中的第i个标准基向量。
 
 如果 $u$， $v$ 都是定义在区域 $\Omega \subset \mathbb{R}^n$ 的标量函数，那么：
 
@@ -138,7 +134,7 @@ $$
 ### 梯度场
 梯度场（Gradient Field）是由数量场得到的矢量场。
 
-具体来说，如果一个多变量函数 $f(x1,x2,...,xn)$ 在每个点上都有定义，并且其偏导数存在，那么该函数的梯度 $\nabla f$ 就是一个矢量场，即梯度场。梯度场中的每个矢量都指向函数值增长最快的方向，其大小为该方向上的方向导数的最大值。
+具体来说，如果一个多变量函数 $f(x_1,x_2,...,x_n)$ 在每个点上都有定义，并且其偏导数存在，那么该函数的梯度 $\nabla f$ 就是一个矢量场，即梯度场。梯度场中的每个矢量都指向函数值增长最快的方向，其大小为该方向上的方向导数的最大值。
 
 此外，梯度场的一个重要性质是其线积分与积分路径无关，只与始末位置在势函数中的值有关。这一性质类比重力场和电场，使得梯度场在物理学、工程学等领域有着广泛的应用。例如，在物理学中，梯度常用于描述电场、磁场、温度场等的分布和变化；在工程学中，梯度则可能用于优化问题，如寻找函数的最值点。
 
@@ -182,7 +178,7 @@ $$
 \int_C \vec{F}\cdot d\vec{r}=\iint_S(\nabla \times \vec{F})\cdot d\vec{S}
 $$
 
-其中，$\int_C \vec{F}\cdot d\vec{r}$ 是向量场 $\vec{F}$ 沿曲线 $C$ 的线积分， $\iint_S(\nabla \times \vec{F})\cdot d\vec{S}$ 是向量场 $\vec{F}$ 的旋度 $\nabla \times \vec{F}$ 在曲面 $S$ 上的面积分，$\nabla \times \vec{F}$表示向量场 $\vec{F}$ 的旋度。
+其中， $\int_C \vec{F}\cdot d\vec{r}$ 是向量场 $\vec{F}$ 沿曲线 $C$ 的线积分， $\iint_S(\nabla \times \vec{F})\cdot d\vec{S}$ 是向量场 $\vec{F}$ 的旋度 $\nabla \times \vec{F}$ 在曲面 $S$ 上的面积分， $\nabla \times \vec{F}$ 表示向量场 $\vec{F}$ 的旋度。
 - Green theorem：主要应用于二维平面区域，处理平面上的曲线积分和二重积分之间的转换问题，例如在计算平面向量场沿闭曲线的环量以及平面区域上的通量等问题中经常用到。
 - Stokes' theorem：应用于三维空间，用于处理三维向量场中曲面的面积分与边界曲线的线积分之间的关系，在分析三维空间中的电磁学问题、流体涡旋等方面有广泛应用。
 - Green theorem：从几何上看，它可以理解为平面区域 $D$ 上的某种“净流量”（由 $\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}$ 表示）与沿着区域 $D$ 的边界曲线 $L$ 的 “流量” 之间的关系。
