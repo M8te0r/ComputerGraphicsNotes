@@ -240,6 +240,7 @@ $$
 ## 变分法
 ### 高维分部积分公式
 令向量场 $F=u\cdot \nabla v$ ，有高维分部积分公式：
+
 $$
 \int_\Omega u\Delta v dV=\int_{\partial{\Omega}}u\frac{\partial{v}}{\partial{n}}dS-\int_\Omega \nabla u \nabla v dV
 $$
@@ -255,8 +256,8 @@ $$
     +\frac{\partial G_2}{\partial x_2}
     +\cdots
     +\frac{\partial G_n}{\partial x_n} \\
-&= \frac{\partial (uv)}{\partial x_i} &\qquad ,(\text{只有第 $i$ 个分量 $G_i=uv$ 非零}) \\
-&= u\frac{\partial v}{\partial x_i} + v\frac{\partial u}{\partial x_i} &\qquad ,(\text{乘法法则：$ (uv)'=u'v+uv'$})
+&= \frac{\partial (uv)}{\partial x_i} &\qquad ,(只有第 i 个分量 G_i=uv 非零) \\
+&= u\frac{\partial v}{\partial x_i} + v\frac{\partial u}{\partial x_i} &\qquad ,(乘法法则： (uv)'=u'v+uv')
 
 \end{align*}
 $$
@@ -283,15 +284,15 @@ $$
 $$
 \int_\Omega u(\nabla \cdot F)dx
 =\int_{\partial \Omega} u (F \cdot \mathbf{n}) dS 
-- \int_\Omega (\nabla u) \cdot Fdx
+-\int_\Omega (\nabla u) \cdot Fdx
 $$
 
 代入 $F=\nabla v$，注意 $\nabla \cdot (\nabla v)=\Delta v$ ，并使边界项变为 $F\cdot \mathbf{n} = \frac{\partial v}{\partial n}$ ，得到Laplace形式：
 
 $$
 \int_\Omega u \nabla v dx
-= \int_{\partial \Omega} u\frac{\partial v}{\partial n} dS
-- \int_\Omega \nabla u \nabla v dx
+=\int_{\partial \Omega} u\frac{\partial v}{\partial n} dS
+-\int_\Omega \nabla u \nabla v dx
 $$
 
 ### 变分法
