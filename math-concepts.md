@@ -134,7 +134,29 @@ $$
 G(x_1,x_2,\cdots,x_n)=u(x_1,x_2,\cdots,x_n)v(x_1,x_2,\cdots,x_n)\mathbf{e_i}
 $$
 
-是一个向量场，因为它的值是一个n维向量。
+是一个向量场，因为它的值是一个n维向量。具体来说，它的第 $i$ 个分量是 $uv$ ，其他分量都是0，即：
+
+$$
+G=(0,\cdots,0,\underbrace{uv}_\text{第i项},0,\cdots,0)
+$$
+
+在n维空间中，向量场 $G=(G_1,G_2,\cdots,G_n)$ 的散度为：
+
+$$
+\nabla \cdot G
+    =\frac{\partial G_1}{\partial x_1}
+    +\frac{\partial G_2}{\partial x_2}
+    +\cdots
+    +\frac{\partial G_n}{\partial x_n} 
+$$
+
+对于我们这个特殊向量场 $G=uv\mathbf{e}_i$ ，只有第 $i$ 个分量 $G_i=uv$ 非零，则：
+
+$$
+\nabla \cdot G
+    =\frac{\partial (uv)}{\partial x_i}
+$$
+
 
 ### 梯度场
 梯度场（Gradient Field）是由数量场得到的矢量场。
@@ -216,3 +238,60 @@ $$
 
 
 ## 变分法
+### 高维分部积分公式
+令向量场 $F=u\cdot \nabla v$ ，有高维分部积分公式：
+$$
+\int_\Omega u\Delta v dV=\int_{\partial{\Omega}}u\frac{\partial{v}}{\partial{n}}dS-\int_\Omega \nabla u \nabla v dV
+$$
+
+#### 推导过程
+取向量场 $G=(G_1,G_2,\cdots,G_n)=uv\mathbf{e}_i$ ，其中 $\mathbf{e}_i$ 为第i个标准基向量，即沿着 $x_i$ 方向的单位向量，那么：
+
+$$
+\begin{align*}
+\nabla \cdot G 
+&= \nabla \cdot (uv\mathbf{e}_i) \\
+&= \frac{\partial G_1}{\partial x_1}
+    +\frac{\partial G_2}{\partial x_2}
+    +\cdots
+    +\frac{\partial G_n}{\partial x_n} \\
+&= \frac{\partial (uv)}{\partial x_i} &\qquad ,(\text{只有第 $i$ 个分量 $G_i=uv$ 非零}) \\
+&= u\frac{\partial v}{\partial x_i} + v\frac{\partial u}{\partial x_i} &\qquad ,(\text{乘法法则：$ (uv)'=u'v+uv'$})
+
+\end{align*}
+$$
+
+代入散度定理 $ \int_\Omega \nabla \cdot G dx=\int_{\partial \Omega} G \cdot \mathbf{n} dS$ ，有：
+
+$$
+\int_\Omega \nabla \cdot G dx
+=\int_\Omega u\frac{\partial v}{\partial x_i} + v\frac{\partial u}{\partial x_i} dx
+=\int_{\partial \Omega} uv\mathbf{e}_i \cdot \mathbf{n} dS
+=\int_{\partial \Omega} uv n_i dS
+$$
+
+整理得到最终公式：
+
+$$
+\int_\Omega u\frac{\partial v}{\partial x_i} dx
+=\int_{\partial \Omega} uv n_i dS
+-\int_\Omega v\frac{\partial u}{\partial x_i} dx
+$$
+
+若把分量求和用向量记号表示（令 $F$ 为任意光滑向量场），对 $F$ 上的每个分量重复上面推导并相加，得到：
+
+$$
+\int_\Omega u(\nabla \cdot F)dx
+=\int_{\partial \Omega} u (F \cdot \mathbf{n}) dS 
+- \int_\Omega (\nabla u) \cdot Fdx
+$$
+
+代入 $F=\nabla v$，注意 $\nabla \cdot (\nabla v)=\Delta v$ ，并使边界项变为 $F\cdot \mathbf{n} = \frac{\partial v}{\partial n}$ ，得到Laplace形式：
+
+$$
+\int_\Omega u \nabla v dx
+= \int_{\partial \Omega} u\frac{\partial v}{\partial n} dS
+- \int_\Omega \nabla u \nabla v dx
+$$
+
+### 变分法
