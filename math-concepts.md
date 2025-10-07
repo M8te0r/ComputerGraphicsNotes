@@ -258,11 +258,10 @@ $$
     +\frac{\partial G_n}{\partial x_n} \\
 &= \frac{\partial (uv)}{\partial x_i} &\qquad ,(只有第 i 个分量 G_i=uv 非零) \\
 &= u\frac{\partial v}{\partial x_i} + v\frac{\partial u}{\partial x_i} &\qquad ,(乘法法则： (uv)'=u'v+uv')
-
 \end{align*}
 $$
 
-代入散度定理 $ \int_\Omega \nabla \cdot G dx=\int_{\partial \Omega} G \cdot \mathbf{n} dS$ ，有：
+代入散度定理 $\int_\Omega \nabla \cdot G dx=\int_{\partial \Omega} G \cdot \mathbf{n} dS$ ，有：
 
 $$
 \int_\Omega \nabla \cdot G dx
