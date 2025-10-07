@@ -19,19 +19,19 @@ $$
     &=\nabla u
     =\frac{\partial u}{\partial x}\vec{i}
     +\frac{\partial u}{\partial y}\vec{j}
-    +\frac{\partial u}{\partial z}\vec{k} \\
+    +\frac{\partial u}{\partial z}\vec{k} \\\\
 
     \text{div}(\vec{A})
     &=\nabla \cdot \vec{A}
     =\frac{\partial A_x}{\partial x}
     +\frac{\partial A_y}{\partial y}
-    +\frac{\partial A_z}{\partial z} \\
+    +\frac{\partial A_z}{\partial z} \\\\
 
     \text{rot}(\vec{A})
     &=\nabla \times u
     =(\frac{\partial A_z}{\partial y}-\frac{\partial A_y}{\partial z})\vec{i}
     +(\frac{\partial A_x}{\partial z}-\frac{\partial A_z}{\partial x})\vec{j}
-    +(\frac{\partial A_y}{\partial x}-\frac{\partial A_x}{\partial y})\vec{k} \\
+    +(\frac{\partial A_y}{\partial x}-\frac{\partial A_x}{\partial y})\vec{k} \\\\
 
     \Delta
     &=\nabla \cdot \nabla
@@ -48,7 +48,7 @@ $$
 |------|-----| ----- |
 | 导数 | $\frac{d}{dx}$ | $\frac{d}{dx}(x^2)=2x$ |
 | 偏导数 | $\frac{\partial}{\partial x}$ | $\frac{\partial}{\partial x}(x^2-xy)=2x-y$ |
-| 梯度 | $\nabla$ | $\nabla(x^2-xy)=\begin{bmatrix} 2x-y \\ -x\end{bmatrix}$ |
+| 梯度 | $\nabla$ | $\nabla(x^2-xy)=\begin{bmatrix} 2x-y \\\\ -x\end{bmatrix}$ |
 
 ### 散度
 大于0时表示向外流出，小于0时表示向内流进。散度值等于各方向偏导相加。
@@ -66,36 +66,12 @@ $$
 ### 雅可比矩阵
 用于坐标变换。对于二维雅可比行列式，其值可以认为是图形在坐标系转换后面积的变化比例。
 
-- **二维情况** ：在平面直角坐标系中，设 $x=x(u,v)$ 和 $y=y(u,v)$ 是从 $(u,v)$ 平面到 $(x,y)$ 平面的坐标变换。则雅可比行列式: 
-$
-J
-=\frac{\partial(x,y)}{\partial(u,v)}
-=\begin{vmatrix} 
-\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ 
-\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
-\end{vmatrix}
-$ 。
-  - 它的绝对值 $|J|$ 用于在二重积分的坐标变换中计算面积元素的缩放比例。例如，从直角坐标 $(x,y)$ 变换到极坐标 $(r,\theta)$ ，$x=r\cos{\theta}$ ，$y=r\sin{\theta}$ ，则雅可比行列式： 
-$
-J
-=\frac{\partial(x,y)}{\partial(r,\theta)}
-=\begin{vmatrix} 
-\cos{\theta} & -r\sin{\theta} \\ 
-\sin{\theta} & r\cos{\theta}
-\end{vmatrix}
-=r
-$ 。
+- **二维情况** ：在平面直角坐标系中，设 $x=x(u,v)$ 和 $y=y(u,v)$ 是从 $(u,v)$ 平面到 $(x,y)$ 平面的坐标变换。则雅可比行列式: $J=\frac{\partial(x,y)}{\partial(u,v)}=\begin{vmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\\\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}\end{vmatrix}$ 。
+  - 它的绝对值 $|J|$ 用于在二重积分的坐标变换中计算面积元素的缩放比例。例如，从直角坐标 $(x,y)$ 变换到极坐标 $(r,\theta)$ ，$x=r\cos{\theta}$ ，$y=r\sin{\theta}$ ，则雅可比行列式: $J=\frac{\partial(x,y)}{\partial(r,\theta)}=\begin{vmatrix} \cos{\theta} & -r\sin{\theta} \\\\ \sin{\theta} & r\cos{\theta}\end{vmatrix}=r$ 。
   - 在计算二重积分 $\iint_D f(x,y)dxdy$ 变换到极坐标下的积分 $\iint_{D' } f(r\cos{\theta},r\sin{\theta})rdrd\theta$ 时， $r=|J|$ 就是面积元素的缩放因子。
 
-- **三维情况**：对于从 $(u,v,w)$ 空间到 $(x,y,z)$ 空间的坐标变换 $x=x(u,v,w)，y=y(u,v,w)，z=z(u,v,w)$ ，则雅可比行列式： 
-$J
-=\frac{\partial(x,y,z)}{\partial(u,v,w)}
-=\begin{vmatrix} 
-\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \\ 
-\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial x}{\partial w} \\
-\frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
-\end{vmatrix}$ 。
-  - 在三重积分的坐标变换中，$|J|$ 表示体积元素的缩放比例。例如，从直角坐标 $(x,y,z)$ 变换到球坐标 $(\rho,\varphi,\theta)$ ， $x=\rho\sin{\varphi}\cos{\theta}$ ， $y=\rho\sin{\varphi}\sin{\theta}$ ， $z=\rho\cos{\varphi}$，则雅可比行列式： $ J=\rho^2\sin{\varphi}$ 
+- **三维情况**：对于从 $(u,v,w)$ 空间到 $(x,y,z)$ 空间的坐标变换 $x=x(u,v,w)，y=y(u,v,w)，z=z(u,v,w)$ ，则雅可比行列式: $J=\frac{\partial(x,y,z)}{\partial(u,v,w)}=\begin{vmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \\\\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial x}{\partial w} \\\\ \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}\end{vmatrix}$ 。
+  - 在三重积分的坐标变换中，$|J|$ 表示体积元素的缩放比例。例如，从直角坐标 $(x,y,z)$ 变换到球坐标 $(\rho,\varphi,\theta)$ ， $x=\rho\sin{\varphi}\cos{\theta}$ ， $y=\rho\sin{\varphi}\sin{\theta}$ ， $z=\rho\cos{\varphi}$，则雅可比行列式： $J=\rho^2\sin{\varphi}$ 
   - 在计算三重积分 $\iiint_V f(x,y,z)dxdydz$ 变换到极坐标下的积分 $\iiint_{V' } f(\rho\sin{\varphi}\cos{\theta},\rho\sin{\varphi}\sin{\theta},\rho\cos{\varphi})\rho^2\sin{\varphi}d\rho d\varphi d\theta$ 时， $\rho^2\sin{\varphi}=|J|$ 就是体积元素的缩放因子。
 
 ### 海森矩阵
@@ -103,9 +79,9 @@ $J
 $$
 \mathbf{H}_f=
 \begin{bmatrix}
-\frac{\partial^2f}{\partial x^2} & \frac{\partial^2f}{\partial x \partial y} & \frac{\partial^2f}{\partial x \partial z} & \cdots \\
-\frac{\partial^2f}{\partial y \partial x} & \frac{\partial^2f}{\partial y^2} & \frac{\partial^2f}{\partial y \partial z} & \cdots \\
-\frac{\partial^2f}{\partial z \partial x} & \frac{\partial^2f}{\partial z \partial y} & \frac{\partial^2f}{\partial z^2} & \cdots \\
+\frac{\partial^2f}{\partial x^2} & \frac{\partial^2f}{\partial x \partial y} & \frac{\partial^2f}{\partial x \partial z} & \cdots \\\\
+\frac{\partial^2f}{\partial y \partial x} & \frac{\partial^2f}{\partial y^2} & \frac{\partial^2f}{\partial y \partial z} & \cdots \\\\
+\frac{\partial^2f}{\partial z \partial x} & \frac{\partial^2f}{\partial z \partial y} & \frac{\partial^2f}{\partial z^2} & \cdots \\\\
 \vdots & \vdots & \vdots & \ddots
 \end{bmatrix}
 $$
