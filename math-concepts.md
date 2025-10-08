@@ -295,3 +295,124 @@ $$
 $$
 
 ### 变分法
+在普通微积分中：
+- 如果要让一个函数 $f(x)$ 最小，就解方程 $f'(x)=0$ ，得到对应的 $x$
+
+在泛函分析/变分法中：
+- 如果要让一个泛函（如Dirichlet能量 $E(u)$ ）最小，就要求它的变分为0：
+
+$$
+\delta E(u)=0
+$$
+
+> 即找到能让 $E(u)$ 最小的函数 $u$
+
+#### 推导
+假如在 $u(x,y)$ 的基础上加一个很小的扰动：
+
+$$
+u_\epsilon(x,y)=u(x,y)+\epsilon v(x,y)
+$$
+
+其中：
+- $\epsilon$ 是一个很小的数
+- $v(x,y)$ 是任意一个“扰动函数”，但边界条件满足 $v|_{\partial \Omega}=0$ (边界固定)
+
+代入能量：
+
+$$
+\begin{align*}
+E(u_\epsilon)
+&=\frac{1}{2}\int_\Omega(|\nabla (u+\epsilon v)|)^2dxdy \\
+&=\frac{1}{2}\int_\Omega(|\nabla u|^2+2\epsilon \nabla u \cdot \nabla v + \epsilon^2 |\nabla v|^2)dxdy
+\end{align*}
+$$
+
+对 $\epsilon$ 求导，取 $\epsilon=0$ ：
+
+$$
+\frac{dE(u_\epsilon)}{d\epsilon}|_{\epsilon=0}=\int_\Omega \nabla u \cdot \nabla v dxdy
+$$
+
+为了使 $E(u)$ 最小，必须对所有扰动 $v$ 都有：
+
+$$
+\delta E(u)=0 \rightarrow \int_\Omega \nabla u \cdot \nabla v dxdy=0
+$$
+
+分部积分有：
+
+$$
+\int_\Omega \nabla u \cdot \nabla v dxdy
+= -\int_\Omega (\Delta u)v dxdy
++\int_{\partial\Omega} v \frac{\partial u}{\partial n} ds
+$$
+
+由于假设 $v|_{\partial\Omega}=0$ ，所以边界项为0：
+
+$$
+\int_\Omega \nabla u \cdot \nabla v dxdy
+= -\int_\Omega (\Delta u)v dxdy
+$$
+
+于是,对所有扰动 $v$ ：
+
+$$
+-\int_\Omega (\Delta u)v dxdy
+=\int_\Omega \nabla u \cdot \nabla v dxdy
+=0
+$$
+
+由于 $v$ 是任意扰动函数，所以上式只有在 $\Delta u=0$ 时才能成立。
+
+
+
+### Dirichlet 能量
+给定一个标量场 $u(x,y)$ ，例如一块橡皮薄膜的高度分布 $u$ ，定义在区域 $\Omega \subset \mathbb{R}^2$ 上，边界 $\partial \Omega$ 被固定住，中间的部分可以自由弯曲。如果橡皮膜很平滑（变化不剧烈），那么“能量”应该很小；如果橡皮膜起伏很大（变化剧烈），那么“能量”应该很大。
+
+使用梯度来刻画橡皮膜表面的变化，它表示在每一点上，函数变化的快慢：
+
+$$
+\nabla u=(\frac{\partial u}{\partial x},\frac{\partial u}{\partial y})
+$$
+
+可以构造一个“总变化”的量，这个量就是Dirichlet能量：
+
+$$
+E(u)=\int_\Omega ||\nabla u||^2 dA
+$$
+
+在给定边界值的条件下，一个最小化的Dirichlet能量，意味着：
+
+$$
+\Delta u=0
+$$
+
+即：**Dirichlet能量最小->函数是调和的**
+
+对于一个从曲面 $S$ 到平面 $D$ 的映射：
+
+$$
+f: S \rightarrow D , f=(u,v)
+$$
+
+则该映射的Dirichlet能量为：
+
+$$
+E(f)=\frac{1}{2}\int_S(|\nabla u|^2+|\nabla v|^2)dA
+$$
+
+几何意义：
+- 若映射均匀光滑，则能量小；
+- 若映射产生很大拉伸或压缩，则能量大
+- 最小化Dirichlet能量常常能得到“光滑、无褶皱”的参数化
+
+离散化形式
+在离散网格曲面上，设每个顶点的函数值为 $u_i$ ，则离散Dirichlet能量写成：
+
+$$
+E(u)=\frac{1}{2}u^\mathrm{T}Lu
+$$
+
+> $L$ 是离散拉普拉斯矩阵
+
