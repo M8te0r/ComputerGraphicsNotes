@@ -175,6 +175,7 @@ $$
 >具体实现参考[论文1](https://www.proquest.com/openview/6a24746a4cfb33148c561f49b8bba715/1?pq-origsite=gscholar&cbl=18750&diss=y)和[论文2](https://www.researchgate.net/profile/Steven-Owen-2/publication/2310238_Constrained_Triangulation_Application_To_Hex-Dominant_Mesh_Generation/links/00b49525190cacd522000000/Constrained-Triangulation-Application-To-Hex-Dominant-Mesh-Generation.pdf)
 
 # 四面体化顶面
+当hex的四个侧面（side）构造好后，需要构造顶面（top）。有时候顶面被另外一个（对面的）`Front`构造了，这个时候不需要构造，因为
 
 
 
