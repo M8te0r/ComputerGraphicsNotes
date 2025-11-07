@@ -77,7 +77,7 @@ $$
 
 ![alt text](image-9.png)
 
-如上图所示，定义夹角 $\theta_i=\cos^-1(V_k \cdot \vec{E}_i)$ ，表示与节点 $N_k$ 相关的所有edge $E_i$ ，其与 $V_k$ 的夹角。取最小的 $\theta_i$ 对应的 $E_i$ 为 $E_k$ 。注意，$E_k$ 必须满足 $\theta<\epsilon$ ，这里， $\epsilon$ 是一个经验值，其值为 $\pi/6$ 。
+如上图所示，定义夹角 $\theta_i=\cos^-1(V_k \cdot \vec{E}_i)$ ，表示与节点 $N_k$ 相关的所有edge $E_i$ ，其与 $V_k$ 的夹角。取最小的 $\theta_i$ 对应的 $E_i$ 为 $E_k$ 。注意， $E_k$ 必须满足 $\theta<\epsilon$ ，这里， $\epsilon$ 是一个经验值，其值为 $\pi/6$ 。
 
 虽然 $E_k$ 满足 $\epsilon$ 误差，但是往往其长度会大于 $1.5h$ 。有两种方案处理这种情况：
 - 由 $E_k$ 构成的新节点 $N_m$ ，需要使用节点重定位（node-relocation）将其分配到新的位置上，以确保 $E_k$ 的长度接近或等于 $h$ 。
