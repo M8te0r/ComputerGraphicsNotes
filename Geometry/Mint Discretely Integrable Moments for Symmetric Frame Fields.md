@@ -186,4 +186,56 @@ $$
 ## 流程
 提出了一个优化算法用于构造对称标架场 $\boldsymbol{F}$ ，从而引导一个无缝参数化。在构造标架场阶段，使用本文提出的基于张量矩的标架场表示法（moment-based frame field representation），随后，使用[CubeCover](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8659.2011.02014.x)算法，在参数化 $\boldsymbol{\phi}$ 中，集成构造的标架场 $\boldsymbol{F}$ 。
 
+## 构造能量 
+### 正交性
+第一个能量用于控制对称标价场中的每对向量标架相互正交（`“odeco”`=orthogonal decomposable）
+
+$$
+E_\text{ortho}=\sum_{\tau}\frac{V(\tau)}{2}\sum_{i\neq j}(\boldsymbol{f}_i\cdot \boldsymbol{f}_j)^2
+$$
+
+-  $\tau$ 指的是每个tet
+-  $V(\tau)$ 指每个tet的体积
+- 这里的求和符号代表遍历所有与标价场 $\boldsymbol{F}$ 相关，且体积等于 $V(\tau)$ 的tet $\tau$
+
+### 单位化
+第二个能量用于使对称标架场中的每个向量尽可能的接近单位向量（as-unit-as-possible）
+
+$$
+E_\text{unit}=\sum_{\tau}\frac{V(\tau)}{2}\sum_{i=1}(||\boldsymbol{f}_i||-1)^2
+$$
+
+### 平面对齐
+给定一个方向 $\boldsymbol{d}$ ，它代表一个平面。这个能量用于惩罚偏离该平面的标架向量 $\boldsymbol{f}_i$ ，即，这个能量要求一个标量势 $\phi$ 的等值面（isosurface）包含 $\boldsymbol{d}$ 
+
+$$
+E_\text{plane}(\tau,\boldsymbol{d},i)=\frac{V(\tau)}{2}(\boldsymbol{d} \cdot \boldsymbol{f}_i)^2
+$$
+
+- 对于每个边界面设置这个能量，从而可以避免标架向量脱出切平面，类似[Fang et al. 2023](https://ieeexplore.ieee.org/abstract/document/9655471/)
+
+---
+通过上述能量，可以构造一个总体表达式：
+
+$$
+E_\text{mesh}=E_\text{smooth}+\lambda_\text{ortho}E_\text{ortho}+\lambda_\text{unit}E_\text{unit}+\lambda_\text{plane}E_\text{plane}
+$$
+
+- 这里，每个 $\lambda$ 取了一个经验值
+-  $\lambda_\text{ortho}=0.1$
+-  $\lambda_\text{unit}=10^{-5}$
+-  $\lambda_\text{plane}=10^{-6}$
+
+整体的优化问题可以表示为：
+
+$$
+\min E_\text{mesh} 
+\quad \text{s.t.} 
+\left\{
+\begin{align*}
+    E_\text{int} &=0 \\
+    \boldsymbol{f}_1(\tau)&=\hat{\boldsymbol{n}}(\tau) \quad \forall \,\, \text{ghost tets} \,\, \tau
+\end{align*}
+\right .
+$$
 

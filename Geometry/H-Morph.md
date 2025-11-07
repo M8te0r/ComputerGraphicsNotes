@@ -174,8 +174,17 @@ $$
 
 >具体实现参考[论文1](https://www.proquest.com/openview/6a24746a4cfb33148c561f49b8bba715/1?pq-origsite=gscholar&cbl=18750&diss=y)和[论文2](https://www.researchgate.net/profile/Steven-Owen-2/publication/2310238_Constrained_Triangulation_Application_To_Hex-Dominant_Mesh_Generation/links/00b49525190cacd522000000/Constrained-Triangulation-Application-To-Hex-Dominant-Mesh-Generation.pdf)
 
-# 四面体化顶面
-当hex的四个侧面（side）构造好后，需要构造顶面（top）。有时候顶面被另外一个（对面的）`Front`构造了，这个时候不需要构造，因为
+## 构造quad顶面
+当hex的四个侧边（`sides`）构造完成后，最后需要构造hex的顶面（`top`）。有的时候是不需要构造的，因为对面推进过来的`Front`会构造当前hex的顶面。大部分时候，用上一部分一样的方法恢复边界
+
+
+## 删除tet和构造hex
+目的是消除已经构造完的`proto-hex`中残留的tet。
+- 取与base`Front`的一个相邻tet
+- 循环遍历base`Front`的所有邻居tet，记录处理过的tet
+- 直到碰到`proto-hex`的quad face（quadrilateral faces），停止遍历
+通过这种方式，可以得到`proto-hex`中的所有tet，从而可以删除所有
+- 首先遍历base`Front`的所有邻居tet，在list中保存所有处理过的tet，直到碰到`proto-hex`的quad face
 
 
 
